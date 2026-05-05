@@ -3,6 +3,8 @@ import Image from "next/image";
 import { wc } from "@/lib/woocommerce";
 import { sanitize } from "@/lib/sanitize";
 import { notFound } from "next/navigation";
+import { Header } from "@/components/Header";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -15,13 +17,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <main className="min-h-screen bg-white">
-      <header className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl tracking-tight text-gray-900">LORENZ MARINE</Link>
-        <nav className="flex gap-6 text-sm text-gray-600">
-          <Link href="/prodotti" className="hover:text-gray-900">Prodotti</Link>
-          <Link href="/contatti" className="hover:text-gray-900">Contatti</Link>
-        </nav>
-      </header>
+      <Header />
 
       <div className="max-w-5xl mx-auto px-6 py-10">
         <Link href="/prodotti" className="text-sm text-gray-500 hover:text-gray-900 mb-6 inline-block">← Torna ai prodotti</Link>
@@ -81,9 +77,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             {product.purchasable && product.price ? (
-              <button className="w-full bg-gray-900 text-white font-semibold py-4 rounded hover:bg-gray-700 transition">
-                Aggiungi al carrello
-              </button>
+              <AddToCartButton
+                item={{
+                  productId: product.id,
+                  name: product.name,
+                  price: parseFloat(product.price),
+                  image: product.images[0]?.src,
+                  slug: product.slug,
+                }}
+              />
             ) : (
               <a
                 href={`mailto:info@lorenzmarine.com?subject=Richiesta%20info%20${encodeURIComponent(product.name)}`}

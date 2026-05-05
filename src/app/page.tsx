@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { wc } from "@/lib/woocommerce";
+import { Header } from "@/components/Header";
 
 export default async function Home() {
   const [products, categories] = await Promise.all([
@@ -10,14 +11,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <div className="font-bold text-xl tracking-tight text-gray-900">LORENZ MARINE</div>
-        <nav className="flex gap-6 text-sm text-gray-600">
-          <Link href="/prodotti" className="hover:text-gray-900">Prodotti</Link>
-          <Link href="/contatti" className="hover:text-gray-900">Contatti</Link>
-        </nav>
-      </header>
+      <Header />
 
       {/* Hero */}
       <section className="bg-gray-900 text-white px-6 py-20 text-center">

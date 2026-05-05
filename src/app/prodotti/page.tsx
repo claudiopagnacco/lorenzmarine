@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { wc } from "@/lib/woocommerce";
+import { Header } from "@/components/Header";
 
 export default async function ProductsPage({
   searchParams,
@@ -18,13 +19,7 @@ export default async function ProductsPage({
 
   return (
     <main className="min-h-screen bg-white">
-      <header className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl tracking-tight text-gray-900">LORENZ MARINE</Link>
-        <nav className="flex gap-6 text-sm text-gray-600">
-          <Link href="/prodotti" className="hover:text-gray-900 font-semibold text-gray-900">Prodotti</Link>
-          <Link href="/contatti" className="hover:text-gray-900">Contatti</Link>
-        </nav>
-      </header>
+      <Header />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex gap-8">

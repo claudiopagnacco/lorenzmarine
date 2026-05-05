@@ -20,6 +20,40 @@ async function wcFetch<T>(endpoint: string, params?: Record<string, string>): Pr
   return res.json();
 }
 
+async function wcPost<T>(endpoint: string, body: unknown): Promise<T> {
+  const res = await fetch(`${BASE_URL}/wp-json/wc/v3/${endpoint}`, {
+    method: "POST",
+    headers: { ...authHeader(), "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`WC API error: ${res.status} ${endpoint} — ${text}`);
+  }
+  return res.json();
+}
+
+export interface WCAddress {
+  first_name: string;
+  last_name: string;
+  address_1: string;
+  address_2?: string;
+  city: string;
+  postcode: string;
+  country: string;
+  state?: string;
+  email?: string;
+  phone?: string;
+}
+
+export interface WCOrder {
+  id: number;
+  status: string;
+  order_key: string;
+  payment_url: string;
+  total: string;
+}
+
 export interface WCProduct {
   id: number;
   name: string;
@@ -52,4 +86,17 @@ export const wc = {
 
   getCategories: () =>
     wcFetch<WCCategory[]>("products/categories", { per_page: "50", hide_empty: "true" }),
+
+  createOrder: (data: {
+    line_items: { product_id: number; quantity: number }[];
+    billing: WCAddress;
+    shipping: WCAddress;
+    customer_note?: string;
+  }) =>
+    wcPost<WCOrder>("orders", {
+      payment_method: "",
+      payment_method_title: "Da scegliere",
+      set_paid: false,
+      ...data,
+    }),
 };
