@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/sanitize-html": "^2.16.1",
+    "@woocommerce/woocommerce-rest-api": "^1.0.2",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sanitize-html": "^2.17.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
