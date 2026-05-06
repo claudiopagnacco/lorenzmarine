@@ -208,23 +208,15 @@ export default async function Home() {
       {/* 5. Q SERIES */}
       <section className="px-4 lg:px-10 py-12 lg:py-16 bg-[#ededed]">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="relative aspect-[4/3]">
-            <Image
-              src="https://lorenzmarine.com/wp-content/uploads/2025/11/lorenz-risorse-sito-3.png"
-              alt="Q Series"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div>
-            <h1 className="h-michroma-1 mb-3 uppercase">Q SERIES</h1>
+          <div className="order-2 lg:order-1">
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/10/Qlogowhite.webp"
               alt="Q"
-              width={120}
-              height={120}
-              className="mb-4 invert opacity-70"
+              width={140}
+              height={140}
+              className="mb-4 invert opacity-80"
             />
+            <h1 className="h-michroma-1 mb-3 uppercase">Q SERIES</h1>
             <p className="text-[18px] lg:text-[20px] text-[#2e2e2e] mb-8 max-w-md leading-relaxed">
               <span className="font-bold">Un solo schermo, infinite possibilità.</span>
               <br />
@@ -235,6 +227,14 @@ export default async function Home() {
                 Scopri serie Q
               </Link>
             </div>
+          </div>
+          <div className="order-1 lg:order-2 relative aspect-[4/3]">
+            <Image
+              src="https://lorenzmarine.com/wp-content/uploads/2025/11/lorenz-risorse-sito-3.png"
+              alt="Q Series"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
       </section>

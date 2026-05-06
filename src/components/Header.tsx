@@ -14,10 +14,10 @@ export function Header() {
   return (
     <>
       <div
-        className="text-white text-xs py-2 px-4 text-center tracking-wide"
+        className="text-white text-[12px] py-[10px] px-4 text-center tracking-wide font-medium"
         style={{ background: "#9e1414" }}
       >
-        Via Maestri del lavoro, 8 — Varazze (SV)
+        Via Maestri del lavoro, 8 — Varazze (SV) · Lun-Ven 9:00 — 17:00
       </div>
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-30">
