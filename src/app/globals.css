@@ -4,12 +4,16 @@
   --background: #ffffff;
   --foreground: #333333;
 
-  /* Brand colors */
-  --brand-red: #a61d1d;
-  --brand-red-dark: #7a1414;
+  /* Brand palette — extracted from lorenzmarine.com computed styles */
+  --brand-red: #a61d1d;        /* rgb(166,29,29) — buttons, accents */
+  --brand-red-dark: #9e1414;   /* rgb(158,20,20) — top bar */
+  --brand-red-deep: #7a1414;
   --brand-blue: #1e73be;
   --brand-blue-dark: #155a96;
-  --brand-gray-light: #f9f9f9;
+  --brand-dark: #171717;       /* dark sections */
+  --brand-text: #2e2e2e;       /* dark button text */
+  --brand-h3: #212121;
+  --brand-gray-light: #f7f7f7;
   --brand-gray: #6b6b6b;
 }
 
@@ -18,13 +22,18 @@
   --color-foreground: var(--foreground);
   --color-brand-red: var(--brand-red);
   --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-red-deep: var(--brand-red-deep);
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-text: var(--brand-text);
+  --color-brand-h3: var(--brand-h3);
   --color-brand-gray-light: var(--brand-gray-light);
   --color-brand-gray: var(--brand-gray);
 
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
   --font-display: var(--font-michroma), monospace;
+  --font-orbitron: var(--font-orbitron), sans-serif;
 }
 
 body {
@@ -35,5 +44,117 @@ body {
 
 .font-display {
   font-family: var(--font-michroma), monospace;
-  letter-spacing: 0.05em;
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron), sans-serif;
+}
+
+/* Pill buttons matching Elementor source: 28px radius, 2px border, fw 800 */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 28px;
+  border: 2px solid currentColor;
+  padding: 15px 30px;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: background 220ms ease, color 220ms ease;
+  white-space: nowrap;
+}
+.btn-pill-red {
+  color: var(--brand-red);
+  background: transparent;
+}
+.btn-pill-red:hover {
+  background: var(--brand-red);
+  color: #fff;
+}
+.btn-pill-dark {
+  color: var(--brand-text);
+  background: transparent;
+}
+.btn-pill-dark:hover {
+  background: var(--brand-text);
+  color: #fff;
+}
+.btn-pill-white {
+  color: #fff;
+  border-color: #fff;
+  background: transparent;
+}
+.btn-pill-white:hover {
+  background: #fff;
+  color: var(--brand-dark);
+}
+
+/* Heading typography 1:1 with original */
+.h-michroma-1 {
+  font-family: var(--font-michroma), monospace;
+  font-size: 31px;
+  line-height: 31px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+}
+.h-michroma-1-red {
+  font-family: var(--font-michroma), monospace;
+  font-size: 31px;
+  line-height: 31px;
+  font-weight: 600;
+  color: var(--brand-red);
+}
+.h-michroma-3 {
+  font-family: var(--font-michroma), monospace;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brand-h3);
+}
+.h-orbitron {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #181818;
+}
+
+/* Background slideshow cross-fade for hero */
+@keyframes bgSlide {
+  0%, 50%   { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: bgSlide 7s infinite ease-in-out;
+}
+.bg-slide-2 {
+  animation-delay: 3.5s;
+}
+
+/* On-scroll fade animations matching Elementor fadeIn / fadeInUp */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate3d(0, 30px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible.fade-in {
+  animation: fadeIn 800ms ease-out forwards;
+}
+.reveal.is-visible.fade-up {
+  animation: fadeInUp 800ms ease-out forwards;
 }

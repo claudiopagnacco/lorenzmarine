@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Michroma } from "next/font/google";
+import { Montserrat, Michroma, Orbitron } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -12,6 +12,12 @@ const michroma = Michroma({
   variable: "--font-michroma",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${montserrat.variable} ${michroma.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${michroma.variable} ${orbitron.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
