@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Star, PhoneCall, CheckCircle2, ChevronsUp } from "lucide-react";
 import { wc } from "@/lib/woocommerce";
 import { Header } from "@/components/Header";
 import { Reveal } from "@/components/Reveal";
+import { ParallaxX } from "@/components/ParallaxX";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const HERO_SLIDES = [
   "https://lorenzmarine.com/wp-content/uploads/2025/08/atom9-lorenz-marine.png",
@@ -33,10 +36,10 @@ const SECTORS = [
 ];
 
 const FEATURES = [
-  { title: "Esperienza pluriennale", desc: "Oltre 50 anni nel settore" },
-  { title: "Assistenza Dedicata", desc: "Supporto tecnico qualificato" },
-  { title: "Qualità certificata", desc: "Made in Italy" },
-  { title: "Innovazione continua", desc: "Tecnologia all'avanguardia" },
+  { Icon: Star, title: "Esperienza pluriennale" },
+  { Icon: PhoneCall, title: "Assistenza Dedicata" },
+  { Icon: CheckCircle2, title: "Qualità certificata" },
+  { Icon: ChevronsUp, title: "Innovazione continua" },
 ];
 
 export default async function Home() {
@@ -61,7 +64,7 @@ export default async function Home() {
       </section>
 
       {/* 1. MAGNUM Pro HD */}
-      <section className="px-4 lg:px-10 py-12 lg:py-16">
+      <section className="px-4 lg:px-10 py-12 lg:py-16 overflow-hidden">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="order-2 lg:order-1">
             <Image
@@ -85,29 +88,31 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="order-1 lg:order-2 relative aspect-[4/3]">
+          <ParallaxX direction="right" className="order-1 lg:order-2 relative aspect-[4/3]">
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/08/18.png"
               alt="Magnum Pro HD"
               fill
+              sizes="(min-width: 1024px) 600px, 100vw"
               className="object-contain"
               priority
             />
-          </div>
+          </ParallaxX>
         </div>
       </section>
 
       {/* 2. ATOM Series */}
-      <section className="px-4 lg:px-10 py-12 lg:py-16">
+      <section className="px-4 lg:px-10 py-12 lg:py-16 overflow-hidden">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="relative aspect-[4/3]">
+          <ParallaxX direction="left" className="relative aspect-[4/3]">
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/08/lorenz-marine-risorse2-19.png"
               alt="Atom Series"
               fill
+              sizes="(min-width: 1024px) 600px, 100vw"
               className="object-contain"
             />
-          </div>
+          </ParallaxX>
           <div>
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/08/image5-e1754397815216.png"
@@ -154,6 +159,7 @@ export default async function Home() {
                       src={p.images[0].src}
                       alt={p.images[0].alt || p.name}
                       fill
+                      sizes="(min-width: 1024px) 240px, 50vw"
                       className="object-contain p-3 group-hover:scale-105 transition-transform"
                     />
                   </div>
@@ -176,7 +182,7 @@ export default async function Home() {
       </Reveal>
 
       {/* 4. RADAR */}
-      <section className="px-4 lg:px-10 py-12 lg:py-16">
+      <section className="px-4 lg:px-10 py-12 lg:py-16 overflow-hidden">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="h-michroma-1-red mb-4 uppercase">RADAR LORENZ MARINE</h1>
@@ -194,19 +200,20 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative aspect-[4/3]">
+          <ParallaxX direction="right" className="relative aspect-[4/3]">
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/10/lorenz-marine-risorse2-27.png"
               alt="Radar Lorenz Marine"
               fill
+              sizes="(min-width: 1024px) 600px, 100vw"
               className="object-contain"
             />
-          </div>
+          </ParallaxX>
         </div>
       </section>
 
-      {/* 5. Q SERIES */}
-      <section className="px-4 lg:px-10 py-12 lg:py-16 bg-[#ededed]">
+      {/* 5. Q SERIES — transparent bg, matches original */}
+      <section className="px-4 lg:px-10 py-12 lg:py-16 overflow-hidden">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="order-2 lg:order-1">
             <Image
@@ -228,14 +235,15 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="order-1 lg:order-2 relative aspect-[4/3]">
+          <ParallaxX direction="left" className="order-1 lg:order-2 relative aspect-[4/3]">
             <Image
               src="https://lorenzmarine.com/wp-content/uploads/2025/11/lorenz-risorse-sito-3.png"
               alt="Q Series"
               fill
+              sizes="(min-width: 1024px) 600px, 100vw"
               className="object-contain"
             />
-          </div>
+          </ParallaxX>
         </div>
       </section>
 
@@ -331,30 +339,38 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 8. Puoi trovarci, sempre + MADE IN ITALY */}
+      {/* 8. Puoi trovarci, sempre — antenna+MADE IN ITALY left, interactive map right */}
       <Reveal as="section" variant="fade-up" className="px-4 lg:px-10 py-16 lg:py-24 bg-white">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h3 className="h-michroma-3 mb-4">Puoi trovarci, sempre.</h3>
-            <p className="text-[18px] lg:text-[22px] text-[#2e2e2e] leading-relaxed max-w-md">
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="h-michroma-3 mb-3 text-center lg:text-left">Puoi trovarci, sempre.</h3>
+            <p className="text-[18px] lg:text-[22px] text-[#2e2e2e] leading-relaxed max-w-md mb-8 text-center lg:text-left">
               Affidati a Lorenz Marine: <span className="font-bold">tecnologia, esperienza e innovazione</span> per la tua sicurezza.
             </p>
-          </div>
-          <div className="flex flex-col items-center justify-center">
-            <div className="relative w-full aspect-square max-w-md">
+            <div className="relative w-full aspect-square max-w-[420px]">
               <Image
                 src="https://lorenzmarine.com/wp-content/uploads/2025/12/ANTENNA-LORENZ-SCONTORNO.png"
                 alt="Antenna Lorenz"
                 fill
+                sizes="(min-width: 1024px) 420px, 80vw"
                 className="object-contain"
               />
             </div>
-            <h3 className="h-michroma-3 mt-4 text-[#a61d1d]">MADE IN ITALY</h3>
+            <h3 className="h-michroma-3 mt-2 text-[#a61d1d] text-center lg:text-left">MADE IN ITALY</h3>
+          </div>
+          <div className="w-full aspect-square lg:aspect-[4/5] overflow-hidden rounded">
+            <iframe
+              title="Mappa Lorenz Marine — Varazze"
+              src="https://maps.google.com/maps?q=Via%20maestri%20del%20lavoro%208%2C%20Varazze&t=m&z=10&output=embed&iwloc=near"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </Reveal>
 
-      {/* 9. Perchè affidarti a Lorenz */}
+      {/* 9. Perchè affidarti a Lorenz — white circle icons with red lucide icons inside */}
       <section className="px-4 lg:px-10 py-16 lg:py-24" style={{ background: "#171717" }}>
         <div className="max-w-[1280px] mx-auto">
           <div className="text-center mb-12">
@@ -365,15 +381,17 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="text-center">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full border-2 border-[#a61d1d] flex items-center justify-center">
-                  <span className="text-[#a61d1d] text-xl">★</span>
+            {FEATURES.map(({ Icon, title }) => (
+              <div key={title} className="text-center flex flex-col items-center">
+                <div
+                  className="rounded-full flex items-center justify-center mb-5"
+                  style={{ width: 85, height: 85, background: "#fff" }}
+                >
+                  <Icon size={45} strokeWidth={1.6} color="#a61d1d" />
                 </div>
-                <h4 className="font-orbitron text-[15px] uppercase tracking-wide mb-2 text-white">
-                  {f.title}
+                <h4 className="font-orbitron text-[15px] tracking-wide text-white">
+                  {title}
                 </h4>
-                <p className="text-[12px] text-gray-400">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -409,71 +427,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0e0e0e] text-white">
-        <div className="max-w-[1280px] mx-auto px-4 lg:px-10 py-14 grid grid-cols-2 lg:grid-cols-5 gap-8">
-          <div className="col-span-2">
-            <Image
-              src="https://lorenzmarine.com/wp-content/uploads/2018/08/Logo_LORENZMARINE-03.png"
-              alt="Lorenz Marine"
-              width={220}
-              height={42}
-              className="h-10 w-auto brightness-0 invert mb-5"
-            />
-            <p className="text-sm text-gray-400 leading-relaxed max-w-sm mb-5">
-              Benvenuti in Lorenz Marine®! Dal 1975, siamo il punto di riferimento per l&apos;attrezzatura nautica professionale e di alta qualità.
-            </p>
-            <p className="text-sm text-gray-300 mb-1">
-              Via Maestri del lavoro, 8 — 17019 Varazze (SV), Italy
-            </p>
-            <p className="text-sm text-gray-400 mb-3">Lun-Ven 9:00 — 17:00</p>
-            <div className="flex gap-4 text-gray-400">
-              <a href="https://www.facebook.com/lorenzmarine" target="_blank" rel="noopener" className="hover:text-white">Facebook</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" className="hover:text-white">Twitter</a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-orbitron text-[14px] uppercase tracking-wider mb-4">Menu rapido</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-white transition">Home</Link></li>
-              <li><a href="https://lorenzmarine.com/about-us/" target="_blank" rel="noopener" className="hover:text-white transition">About</a></li>
-              <li><Link href="/prodotti" className="hover:text-white transition">Prodotti</Link></li>
-              <li><a href="https://lorenzmarine.com/lavora-con-noi/" target="_blank" rel="noopener" className="hover:text-white transition">Lavora con noi</a></li>
-              <li><a href="https://lorenzmarine.com/dealers/" target="_blank" rel="noopener" className="hover:text-white transition">Dealers</a></li>
-              <li><Link href="/contatti" className="hover:text-white transition">Contatti</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-orbitron text-[14px] uppercase tracking-wider mb-4">Downloads</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="https://lorenzmarine.com/aggiornamenti-software/" target="_blank" rel="noopener" className="hover:text-white transition">Aggiornamenti software</a></li>
-              <li><a href="https://lorenzmarine.com/manuali/" target="_blank" rel="noopener" className="hover:text-white transition">Manuali dei prodotti</a></li>
-              <li><a href="https://lorenzmarine.com/news/" target="_blank" rel="noopener" className="hover:text-white transition">News da Lorenz</a></li>
-              <li><a href="https://lorenzmarine.com/refund_returns/" target="_blank" rel="noopener" className="hover:text-white transition">Termini e condizioni</a></li>
-              <li><a href="https://lorenzmarine.com/privacy-policy/" target="_blank" rel="noopener" className="hover:text-white transition">Privacy Policy</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-orbitron text-[14px] uppercase tracking-wider mb-4">Contatti</h4>
-            <p className="text-sm text-gray-400 mb-1">Scrivi qui:</p>
-            <a href="mailto:info@lorenzmarine.com" className="text-sm text-white hover:text-[#a61d1d] transition mb-3 inline-block">
-              info@lorenzmarine.com
-            </a>
-            <p className="text-sm text-gray-400 mt-3">
-              <a href="https://lorenzmarine.com/contact-page/" target="_blank" rel="noopener" className="hover:text-white transition">
-                chiama
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 px-4 lg:px-10 py-4 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Lorenz Marine S.r.l. — Tutti i diritti riservati
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
