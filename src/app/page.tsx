@@ -339,29 +339,48 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 8. Puoi trovarci, sempre — antenna+MADE IN ITALY left, interactive map right */}
-      <Reveal as="section" variant="fade-up" className="px-4 lg:px-10 py-16 lg:py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-col items-center lg:items-start">
-            <h3 className="h-michroma-3 mb-3 text-center lg:text-left">Puoi trovarci, sempre.</h3>
-            <p className="text-[18px] lg:text-[22px] text-[#2e2e2e] leading-relaxed max-w-md mb-8 text-center lg:text-left">
-              Affidati a Lorenz Marine: <span className="font-bold">tecnologia, esperienza e innovazione</span> per la tua sicurezza.
-            </p>
-            <div className="relative w-full aspect-square max-w-[420px]">
-              <Image
-                src="https://lorenzmarine.com/wp-content/uploads/2025/12/ANTENNA-LORENZ-SCONTORNO.png"
-                alt="Antenna Lorenz"
-                fill
-                sizes="(min-width: 1024px) 420px, 80vw"
-                className="object-contain"
-              />
+      {/* 8. Puoi trovarci, sempre — title left, subtitle+flag+MADE IN ITALY right, map full-width */}
+      <Reveal as="section" variant="fade-up" className="px-4 lg:px-10 py-16 lg:py-20 bg-white">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center lg:divide-x lg:divide-[#a61d1d]/40 mb-12">
+            <div className="lg:pr-10">
+              <h2
+                className="text-[40px] lg:text-[56px] leading-[1.05] font-semibold text-[#a61d1d]"
+                style={{ fontFamily: "var(--font-michroma), monospace" }}
+              >
+                Puoi trovarci,
+                <br />
+                sempre.
+              </h2>
             </div>
-            <h3 className="h-michroma-3 mt-2 text-[#a61d1d] text-center lg:text-left">MADE IN ITALY</h3>
+            <div className="lg:pl-10">
+              <p className="text-[16px] lg:text-[18px] text-[#2e2e2e] leading-[1.6] mb-6">
+                Affidati a Lorenz Marine: tecnologia,
+                <br />
+                esperienza e innovazione per la tua sicurezza.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-[60px] h-[60px] rounded-full overflow-hidden shrink-0 border border-gray-200">
+                  <div className="flex w-full h-full">
+                    <span className="w-1/3 h-full bg-[#009246]" />
+                    <span className="w-1/3 h-full bg-white" />
+                    <span className="w-1/3 h-full bg-[#ce2b37]" />
+                  </div>
+                </div>
+                <span
+                  className="text-[28px] lg:text-[34px] font-semibold text-[#171717] leading-none"
+                  style={{ fontFamily: "var(--font-michroma), monospace" }}
+                >
+                  MADE IN ITALY
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="w-full aspect-square lg:aspect-[4/5] overflow-hidden rounded">
+
+          <div className="w-full h-[420px] lg:h-[500px] overflow-hidden">
             <iframe
               title="Mappa Lorenz Marine — Varazze"
-              src="https://maps.google.com/maps?q=Via%20maestri%20del%20lavoro%208%2C%20Varazze&t=m&z=10&output=embed&iwloc=near"
+              src="https://maps.google.com/maps?q=Via%20maestri%20del%20lavoro%208%2C%20Varazze&t=m&z=12&output=embed&iwloc=near"
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
